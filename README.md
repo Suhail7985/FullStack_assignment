@@ -114,6 +114,8 @@ The live app will be at `https://<project>.vercel.app`. API health: `https://<pr
 
 > Frontend calls `/api` on the **same domain**, so no separate backend URL is required.
 
+**Live deployment:** [https://pulsereview-rosy.vercel.app](https://pulsereview-rosy.vercel.app)
+
 ---
 
 ## Demo accounts

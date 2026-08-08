@@ -19,12 +19,12 @@ function errorHandler(err, _req, res, _next) {
 
   const statusCode = err.statusCode || 500;
   const message =
-    err.isOperational || statusCode < 500
-      ? err.message
+    err.isOperational || statusCode < 500 || process.env.VERCEL
+      ? err.message || 'Internal server error'
       : 'Internal server error';
 
-  if (process.env.NODE_ENV !== 'test' && statusCode >= 500) {
-    console.error(err);
+  if (process.env.NODE_ENV !== 'test') {
+    console.error('[api-error]', statusCode, err.message, err.stack);
   }
 
   const body = { success: false, message };

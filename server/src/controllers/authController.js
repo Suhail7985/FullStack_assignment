@@ -34,8 +34,8 @@ async function login(req, res, next) {
         companyId: employee.companyId.toString(),
         role: employee.role,
       },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      (process.env.JWT_SECRET || '').trim(),
+      { expiresIn: (process.env.JWT_EXPIRES_IN || '7d').trim() }
     );
 
     const company = await Company.findById(employee.companyId).select('name slug');

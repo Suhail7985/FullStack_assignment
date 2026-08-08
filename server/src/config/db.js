@@ -9,6 +9,9 @@ async function connectDB(uri = process.env.MONGO_URI) {
     throw new Error('MONGO_URI is not defined');
   }
 
+  // Vercel env values can pick up accidental trailing whitespace/newlines
+  uri = String(uri).trim();
+
   if (mongoose.connection.readyState === 1) {
     return mongoose.connection;
   }
